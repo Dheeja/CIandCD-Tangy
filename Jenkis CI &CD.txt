@@ -1,0 +1,5 @@
+root@ip-10-0-8-82:/home/ubuntu/2048# cat /var/lib/jenkins/secrets/initialAdminPassword
+79de3549f4f2476ea2e380bd3ee9676d
+
+
+http://13.201.122.36:8080/
