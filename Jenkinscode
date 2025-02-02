@@ -1,13 +1,25 @@
 pipeline {
     agent {
-        docker { image 'node:16-alpine' }
+        docker {
+            image 'node:16-alpine'
+            label 'node-container'
+        }
     }
     stages {
-        stage('Test') {
-            steps{
-                sh 'node --version'
+        stage('Check Node Version') {
+            steps {
+                script {
+                    sh 'node --version'
+                }
             }
         }
     }
-
+    post {
+        success {
+            echo 'Node.js version checked successfully.'
+        }
+        failure {
+            echo 'Failed to check Node.js version.'
+        }
+    }
 }
