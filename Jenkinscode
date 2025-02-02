@@ -1,57 +1,37 @@
-<DOCTYPE html>
-    <html>
-        <head>
-            <title>AMIGo</title>
-            <link rel="icon" href="C:\Users\jagad\Desktop\Yazhal html\images\10254411.png">
+pipeline {
+    agent any
 
-        </head>
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clone the repository that contains the HTML file
+                git 'https://github.com/Dheeja/CIandCD-Tangy.git'
+            }
+        }
 
-        <body bgcolor="black" style="color: white;">
-            <center>
-                <h1>MY AMIGO'S 💕</h1>
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // Add build steps if necessary
+            }
+        }
 
-                <p>Hello sir,I'm Jagadesh recently came across a job vacancy at [RND Soft Tech] your company for Devops.</p>
-            </center>
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                // Deploy the HTML file to your web server or desired location
+                // For example, copy the file to a specific directory
+                sh 'cp index.html /var/www/html'
+            }
+        }
+    }
 
-            <hr>
-            <center>
-            <p>As it turns out, love is all about the brain – which, in turn, makes the rest of your body go haywire. According to a team of scientists led by Dr. Helen Fisher at Rutgers, romantic love can be broken down into three categories: lust, attraction, and attachment.</p>
-            <img src="C:\Users\jagad\Desktop\Amigo Website\images\Dhee.jpj.jpg" width="400">
-            <h1>Photo Gallery</h1>
-            <h2>Free Entry For Couples | Free Food | Pets Not Allowed</h2>
-            <p>Cynics often swear it doesn't exist, while hopeless romantics think everyone should set out to find their soulmates. With science now showing that true love is not only possible, but can actually last a lifetime,</p>
-            </center>
-            <center>
-                <img src="C:\Users\jagad\Desktop\Amigo Website\images\fashion post.webp" width="500">
-                <h1>Clothes influence | The Fashion</h1>
-                <a href="https://www.nykaafashion.com/">Fashion Store</a>
-                <p>Clothes influence how we look at someone. They help create an idea of what we think about their personality.</p>
-            </center>
-            <hr>
-            <center>
-                <h1>Contact</h1>
-                <h2> 9487650395 | janafashion@gmail.com</h2>
-                <p> 8th street ,Avnue park ,Trichy-638556</p>
-            </center>
-
-            <hr>
-            <center>
-                <h1>IPL Team</h1>
-            <table border="1"
-                 <tr>
-                    <td>Name</td> <td>Age</td> <td>Team</td>
-                 </tr>
-                 <tr>
-                    <td>Dhoni</td> <td>41</td> <td>CSK</td>
-                 </tr>
-                 <tr>
-                    <td>VAIRAT kohli</td> <td>34</td> <td>RCB</td>
-                 </tr>
-                 <tr>
-                    <td>Masthi</td> <td>54</td> <td>DDD</td>
-                 </tr>
-            </center>
-
-
-        </body>
-    </html>
+    post {
+        success {
+            echo 'Pipeline completed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
