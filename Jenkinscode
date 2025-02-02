@@ -20,8 +20,8 @@ pipeline {
             steps {
                 echo 'Deploying...'
                 // Deploy the HTML file to your web server or desired location
-                // For example, copy the file to a specific directory
-                sh 'cp index.html /var/www/html'
+                // Update the path if 'index.html' is in a subdirectory
+                sh 'cp path/to/index.html /var/www/html'
             }
         }
     }
