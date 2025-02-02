@@ -21,7 +21,7 @@ pipeline {
                 echo 'Deploying...'
                 // Deploy the HTML file to your web server or desired location
                 // Update the path if 'index.html' is in a subdirectory
-                sh 'cp path/to/index.html /var/www/html'
+                sh 'cp html/index.html /var/www/html'
             }
         }
     }
