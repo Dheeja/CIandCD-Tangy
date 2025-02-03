@@ -4,7 +4,7 @@ pipeline {
         stage('Clone Repository') {
             steps {
                 // Cloning the repository from the provided URL
-                git url: 'https://your-repo-url.git'
+                git url: 'https://github.com/Dheeja/CIandCD-Tangy.git'
             }
         }
         stage('Build') {
