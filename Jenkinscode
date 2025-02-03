@@ -1,37 +1,21 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Checkout') {
-            steps {
-                // Clone the repository that contains the HTML file
-                git 'https://github.com/Dheeja/CIandCD-Tangy.git'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building...'
-                // Add build steps if necessary
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Deploy the HTML file to your web server or desired location
-                // Update the path if 'index.html' is in a subdirectory
-                sh 'cp html/index.html /var/www/html'
-            }
-        }
+  agent none
+  stages {
+    stage('Back-end') {
+      agent {
+        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+      }
+      steps {
+        sh 'mvn --version'
+      }
     }
-
-    post {
-        success {
-            echo 'Pipeline completed successfully.'
-        }
-        failure {
-            echo 'Pipeline failed.'
-        }
+    stage('Front-end') {
+      agent {
+        docker { image 'node:16-alpine' }
+      }
+      steps {
+        sh 'node --version'
+      }
     }
+  }
 }
